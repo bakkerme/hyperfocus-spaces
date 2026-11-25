@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "brandon.spaces",
+  "name": "Spaces",
+  "version": "1.0.0",
+  "author": "Brandon",
+  "license": "MIT",
+  "description": "macOS-style horizontal workspace overview with click-to-switch and drag-to-reorder.",
+  "kinds": [
+    "overlay",
+    "bar-widget"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "overlay": "SpacesOverlay.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Spaces",
+    "description": "Toggle the horizontal Spaces workspace overview strip",
+    "category": "Compositor",
+    "defaultSection": "left",
+    "allowMultiple": false
+  }
+}
