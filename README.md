@@ -12,9 +12,10 @@ macOS Spaces-inspired horizontal workspace overview and drag-to-reorder plugin f
 - **Drag to reorder (insert & shift)**: drag a space horizontally to move it to a new slot; other spaces glide smoothly to show the target slot, and Hyprland workspace IDs + saved per-workspace layouts (`~/.local/state/omarchy/workspace-layouts/`) are atomically renumbered to match.
 - **Keyboard navigation**: `←`/`→` (or `h`/`l`) to select, `Shift+←`/`Shift+→` (or `Shift+h`/`Shift+l`) to reorder, `Enter`/`Space` to switch, `Esc` to close.
 
-## Install / Link
+## Install
 
 ```bash
+git clone https://github.com/bakkerme/hyperfocus-spaces.git ~/sources/hyperfocus-spaces
 ln -s ~/sources/hyperfocus-spaces ~/.config/omarchy/plugins/brandon.spaces
 omarchy restart shell
 ```

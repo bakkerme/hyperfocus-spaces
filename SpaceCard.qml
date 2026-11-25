@@ -9,7 +9,6 @@ Item {
 
   required property int spaceId
   required property int slotNumber
-  required property int cardIndex
   required property bool isGuest
   required property bool isActive
   required property bool isSelected
@@ -21,7 +20,6 @@ Item {
   required property var projectedWindows
   required property int windowCount
   required property string summaryText
-  required property string spaceLabel
   required property string emptyLabel
   required property bool captureEnabled
   required property var iconLookup

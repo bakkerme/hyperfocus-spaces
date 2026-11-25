@@ -2,12 +2,5 @@
   "bar.tooltip": "Spaces",
   "overlay.title": "Spaces",
   "overlay.hint": "Click to switch · Drag to reorder · Shift+←/→ · Esc",
-  "space.label": "Space %1",
-  "space.empty": "Empty",
-  "space.active": "Active",
-  "space.guest": "Guest %1",
-  "space.windows": {
-    "one": "%1 window",
-    "other": "%1 windows"
-  }
+  "space.empty": "Empty"
 }

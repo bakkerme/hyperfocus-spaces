@@ -50,7 +50,6 @@ Item {
   property bool dragging: false
   property bool suppressSlotAnimation: false
   property bool reorderInFlight: false
-  property string requestedMonitorName: ""
   property int dataRevision: 0
 
   readonly property var targetMonitor: overlay.targetMonitor || Hyprland.focusedMonitor
@@ -259,7 +258,6 @@ Item {
         if (parsed && typeof parsed.monitor === "string") requested = parsed.monitor
       } catch (e) {}
     }
-    root.requestedMonitorName = requested
     root.dragging = false
     root.dragIndex = -1
     root.dropIndex = -1
@@ -277,7 +275,6 @@ Item {
   }
 
   function close() {
-    root.requestedMonitorName = ""
     root.dragging = false
     root.dragIndex = -1
     root.dropIndex = -1
@@ -710,7 +707,6 @@ Item {
                 anchors.fill: parent
                 spaceId: cardSlot.modelData
                 slotNumber: SpacesModel.slotOf(cardSlot.modelData)
-                cardIndex: cardSlot.index
                 isGuest: false
                 isActive: cardSlot.modelData === root.activeWorkspaceId
                 isSelected: cardSlot.index === root.selectedIndex
@@ -722,7 +718,6 @@ Item {
                 projectedWindows: cardSlot.projected
                 windowCount: cardSlot.projected.length
                 summaryText: root.summaryForWorkspace(cardSlot.modelData)
-                spaceLabel: strings.t("space.label").arg(SpacesModel.slotLabel(SpacesModel.slotOf(cardSlot.modelData)))
                 emptyLabel: strings.t("space.empty")
                 captureEnabled: root.opened && overlay.contentRevealed
                 iconLookup: root.iconForAppClass
@@ -849,7 +844,6 @@ Item {
                 anchors.fill: parent
                 spaceId: guestSlot.modelData
                 slotNumber: SpacesModel.slotOf(guestSlot.modelData)
-                cardIndex: guestSlot.fullIndex
                 isGuest: true
                 isActive: guestSlot.modelData === root.activeWorkspaceId
                 isSelected: guestSlot.fullIndex === root.selectedIndex
@@ -861,7 +855,6 @@ Item {
                 projectedWindows: guestSlot.projected
                 windowCount: guestSlot.projected.length
                 summaryText: root.summaryForWorkspace(guestSlot.modelData)
-                spaceLabel: strings.t("space.guest").arg(String(guestSlot.modelData))
                 emptyLabel: strings.t("space.empty")
                 captureEnabled: root.opened && overlay.contentRevealed
                 iconLookup: root.iconForAppClass

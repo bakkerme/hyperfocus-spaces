@@ -14,22 +14,22 @@ vm.runInContext(src, ctx);
 
 // 1. Monitor block parsing & resolution
 const blocks = ctx.parseMonitorBlocks(
-  "0\teDP-1\tBOE 0x095F\n1\tDP-12\tBenQ RD280U HAR1\n2\t\tUnplugged\n"
+  "0\teDP-1\tBuilt-in Display\n1\tDP-1\tExternal Display\n2\t\tUnplugged\n"
 );
 assert.equal(blocks["eDP-1"], 0);
-assert.equal(blocks["DP-12"], 1);
-assert.equal(ctx.resolveMonitorBlock("DP-12", blocks, 1), 1);
+assert.equal(blocks["DP-1"], 1);
+assert.equal(ctx.resolveMonitorBlock("DP-1", blocks, 1), 1);
 assert.equal(ctx.resolveMonitorBlock("HDMI-A-1", blocks, 23), 2);
 assert.equal(ctx.resolveMonitorBlock("HDMI-A-1", blocks, -1), 0);
 
 // 2. buildMonitorSpaces: fixed 1-5 + occupied 6-10 + guest separation
-const built = ctx.buildMonitorSpaces(1, "DP-12", [
-  { id: 12, monitorName: "DP-12" },
-  { id: 16, monitorName: "DP-12" },
-  { id: 19, monitorName: "DP-12" },
+const built = ctx.buildMonitorSpaces(1, "DP-1", [
+  { id: 12, monitorName: "DP-1" },
+  { id: 16, monitorName: "DP-1" },
+  { id: 19, monitorName: "DP-1" },
   { id: 2, monitorName: "eDP-1" },
-  { id: 23, monitorName: "DP-12" }, // guest from unplugged monitor block 2
-  { id: -98, monitorName: "DP-12" }, // special workspace ignored
+  { id: 23, monitorName: "DP-1" }, // guest from unplugged monitor block 2
+  { id: -98, monitorName: "DP-1" }, // special workspace ignored
 ]);
 assert.deepEqual(Array.from(built.ownIds), [11, 12, 13, 14, 15, 16, 19]);
 assert.deepEqual(Array.from(built.guestIds), [23]);
@@ -74,7 +74,7 @@ assert.equal(ctx.dropIndexForX(250, 200, 12, 5), 1);
 assert.equal(ctx.dropIndexForX(9999, 200, 12, 5), 4);
 
 // 6. logicalMonitorRect (fractional scale + rotated monitor)
-const benq = ctx.logicalMonitorRect({
+const hidpiDisplay = ctx.logicalMonitorRect({
   x: 2400,
   y: 0,
   width: 3840,
@@ -82,8 +82,8 @@ const benq = ctx.logicalMonitorRect({
   scale: 1.6,
   transform: 0,
 });
-assert.equal(benq.width, 2400);
-assert.equal(benq.height, 1600);
+assert.equal(hidpiDisplay.width, 2400);
+assert.equal(hidpiDisplay.height, 1600);
 const portrait = ctx.logicalMonitorRect({
   x: 0,
   y: 0,
@@ -134,7 +134,7 @@ const projected = ctx.projectWindows(
       hidden: true,
     },
   ],
-  benq,
+  hidpiDisplay,
   240,
   160
 );
