@@ -8,7 +8,7 @@ import "SpacesModel.js" as SpacesModel
 
 BarWidget {
   id: root
-  moduleName: "brandon.spaces"
+  moduleName: "hyperfocus.spaces"
 
   Commons.Translations {
     id: strings
@@ -35,7 +35,7 @@ BarWidget {
       if (mouseButton === Qt.LeftButton) {
         var monName = root.monitor ? String(root.monitor.name || "") : ""
         var payload = monName ? JSON.stringify({ monitor: monName }) : "{}"
-        root.bar.run("omarchy-shell shell toggle brandon.spaces " + Util.shellQuote(payload))
+        root.bar.run("omarchy-shell shell toggle hyperfocus.spaces " + Util.shellQuote(payload))
       }
     }
   }

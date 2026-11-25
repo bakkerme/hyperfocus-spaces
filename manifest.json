@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "brandon.spaces",
-  "name": "Spaces",
+  "id": "hyperfocus.spaces",
+  "name": "Hyperfocus Spaces",
   "version": "1.0.0",
-  "author": "Brandon",
+  "author": "Brandon Bakker",
   "license": "MIT",
   "description": "macOS-style horizontal workspace overview with click-to-switch and drag-to-reorder.",
   "kinds": [
@@ -16,7 +16,7 @@
     "barWidget": "BarWidget.qml"
   },
   "barWidget": {
-    "displayName": "Spaces",
+    "displayName": "Hyperfocus Spaces",
     "description": "Toggle the horizontal Spaces workspace overview strip",
     "category": "Compositor",
     "defaultSection": "left",

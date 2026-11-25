@@ -18,7 +18,7 @@ Item {
 
   readonly property string pluginDir: manifest && manifest.__sourceDir
     ? String(manifest.__sourceDir)
-    : (Quickshell.env("HOME") + "/.config/omarchy/plugins/brandon.spaces")
+    : (Quickshell.env("HOME") + "/.config/omarchy/plugins/hyperfocus.spaces")
   readonly property string reorderScript: pluginDir + "/reorder-spaces.sh"
   readonly property string home: Quickshell.env("HOME")
   readonly property string stateHome: Quickshell.env("XDG_STATE_HOME") || (home + "/.local/state")
@@ -174,7 +174,7 @@ Item {
     onExited: function(exitCode) {
       root.reorderInFlight = false
       if (exitCode !== 0) {
-        console.warn("brandon.spaces: reorder-spaces.sh exited with code", exitCode)
+        console.warn("hyperfocus.spaces: reorder-spaces.sh exited with code", exitCode)
       }
       Hyprland.refreshMonitors()
       Hyprland.refreshWorkspaces()
@@ -226,7 +226,7 @@ Item {
       root.dataRevision++
       root.syncSelectionToActive()
     } catch (e) {
-      console.warn("brandon.spaces: failed to parse Hyprland snapshot:", e)
+      console.warn("hyperfocus.spaces: failed to parse Hyprland snapshot:", e)
     }
   }
 
@@ -428,7 +428,7 @@ Item {
   OverlayWindow {
     id: overlay
     shown: root.opened
-    WlrLayershell.namespace: "brandon-spaces"
+    WlrLayershell.namespace: "hyperfocus-spaces"
 
     // Backdrop scrim — click anywhere outside the strip to dismiss
     Rectangle {
