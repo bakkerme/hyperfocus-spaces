@@ -2,6 +2,8 @@
 
 macOS Spaces-inspired horizontal workspace overview and drag-to-reorder plugin for [Omarchy](https://omarchy.org/) (`omarchy-shell`, plugin id `hyperfocus.spaces`).
 
+![Hyperfocus Spaces overview strip](assets/screenshot.png)
+
 ## Features
 
 - **Top bar button** (`󰓩`) next to `omarchy.workspaces` to toggle the overview strip on the clicked monitor.
